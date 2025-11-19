@@ -9,11 +9,12 @@ def d(n: int) -> int:
 
 sigma = 0
 for a in range(1, 10_000):
-    for b in range(a+1, 10_000):
+    b = d(a)
+    if b == a:
+        continue
 
-        if d(a) == b and d(b) == a:
-            sigma += a + b
-            print(a, b)
+    if d(b) == a:
+        sigma += a + b
         
 
-print(sigma)
+print(sigma//2)

@@ -4,11 +4,11 @@ def max_path(trangle: list[list[int]]) -> int:
             trangle[i][j] += max(trangle[i + 1][j], trangle[i + 1][j + 1])
     return trangle[0][0]
 
-def convert_str_to_nestet_list_of_int(data: str) ->  list[list[int]]:
+def convert_str_to_nestet_list_of_int(data: str) -> list[list[int]]:
     data = data.strip()
     data = data.split("\n")
     for i, row in enumerate(data):
-        data[i] = list(map(int, row.split()))
+        data[i] = [int(entry) for entry in row.split()]
     return data
 
 triangle = """
@@ -33,8 +33,8 @@ triangle = convert_str_to_nestet_list_of_int(triangle)
 print(max_path(triangle))
 
 file_path = "triangle.txt"
-file_object = open(file_path)
-triangle = file_object.read()
-triangle = convert_str_to_nestet_list_of_int(triangle)
-print(max_path(triangle))
-file_object.close()
+
+with open(file_path) as file_object:
+    triangle = file_object.read()
+    triangle = convert_str_to_nestet_list_of_int(triangle)
+    print(max_path(triangle))
