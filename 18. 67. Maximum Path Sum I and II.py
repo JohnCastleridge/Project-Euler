@@ -1,3 +1,5 @@
+import time
+
 def max_path(trangle: list[list[int]]) -> int:
     for i in range(len(trangle) - 2, -1, -1):
         for j in range(len(trangle[i])):
@@ -29,12 +31,24 @@ triangle = """
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 """
 
+start_time = time.perf_counter()
+
 triangle = convert_str_to_nestet_list_of_int(triangle)
 print(max_path(triangle))
 
-file_path = "triangle.txt"
+end_time = time.perf_counter()
+elapsed_time = end_time - start_time
+print(f"Execution time: {elapsed_time:.4f} seconds")
 
+
+start_time = time.perf_counter()
+
+file_path = "triangle.txt"
 with open(file_path) as file_object:
     triangle = file_object.read()
     triangle = convert_str_to_nestet_list_of_int(triangle)
     print(max_path(triangle))
+
+end_time = time.perf_counter()
+elapsed_time = end_time - start_time
+print(f"Execution time: {elapsed_time:.4f} seconds")

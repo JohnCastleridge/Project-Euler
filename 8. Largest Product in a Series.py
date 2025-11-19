@@ -1,3 +1,5 @@
+import time
+
 digits = """73167176531330624919225119674426574742355349194934
             96983520312774506326239578318016984801869478851843
             85861560789112949495459501737958331952853208805511
@@ -24,6 +26,10 @@ digits = digits.replace(' ',"")
 
 LENGTH = 13
 
+
+start_time = time.perf_counter()
+
+
 best = 0
 for i in range(len(digits)-LENGTH):
     slider = digits[i:i+LENGTH]
@@ -33,5 +39,9 @@ for i in range(len(digits)-LENGTH):
         product *= int(slider[j])
 
     best = max(best, product)
+
+end_time = time.perf_counter()
+elapsed_time = end_time - start_time
+print(f"Execution time: {elapsed_time:.4f} seconds")
 
 print(best)

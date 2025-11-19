@@ -1,3 +1,5 @@
+import time
+
 grid = """
 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
@@ -33,6 +35,8 @@ for i, line in enumerate(grid):
 length = len(grid)
 
 
+start_time = time.perf_counter()
+
 best = 0
 product = 1
 for _ in range(4):
@@ -52,5 +56,8 @@ for _ in range(4):
     #rotate 90 deg clockwise to check all 4 corners and all 4 sides horizontally
     grid = [list(row) for row in zip(*grid)]
 
+end_time = time.perf_counter()
+elapsed_time = end_time - start_time
+print(f"Execution time: {elapsed_time:.4f} seconds")
 
 print(best)
